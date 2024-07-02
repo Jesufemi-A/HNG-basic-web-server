@@ -24,6 +24,13 @@ public class HelloController {
     @Value("${OPENWEATHERMAP_API_KEY}")
     private String weatherApiKey;
 
+
+    @GetMapping("/cron")
+    public void doCron() {
+        System.out.println("Keep alive");
+    }
+
+
     @GetMapping("/api/hello")
     public String getHello(@RequestParam("visitor_name") String visitorName, HttpServletRequest request) {
         try {
@@ -49,6 +56,8 @@ public class HelloController {
             }
 
             logger.info("ip: " + clientIp);
+
+//            clientIp = "63.116. 61.253";
 
 
             // Get location information from ipinfo.io
