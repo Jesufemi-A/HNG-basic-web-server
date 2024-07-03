@@ -1,9 +1,17 @@
 package com.HNG_basic_web_server.projectconfig;
 
-import org.springframework.context.annotation.ComponentScan;
+
+import org.springframework.context.annotation.Bean;
+
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
-@ComponentScan(basePackages = {"com.HNG_basic_web_server.restcontroller"})
 public class ProjectConfig {
+
+    @Bean
+    public RestTemplate restTemplate() {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate;
+    }
 }
