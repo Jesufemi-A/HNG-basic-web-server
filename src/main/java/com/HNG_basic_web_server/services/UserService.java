@@ -1,7 +1,6 @@
 package com.HNG_basic_web_server.services;
 
 import com.HNG_basic_web_server.DTO.LocationInfoDTO;
-import com.HNG_basic_web_server.DTO.ResponseDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,25 +71,12 @@ public class UserService {
 //    }
 
 
-    public ResponseDTO mapInfo(LocationInfoDTO locationInfo, HttpServletRequest request) {
-
-        //        logger.info("location info details: " + locationInfo);
-        locationInfo = getLocationInfo(request);
-
-        String location = locationInfo.getLocation().getRegion();
-        double temperature = locationInfo.getCurrent().getTemp_c();
-
-
-        ResponseDTO responseDTO = new ResponseDTO();
-        responseDTO.setLocation(location);
-
-
-        return responseDTO;
-    }
-
     public String checkName(HttpServletRequest request) {
 
         String name = request.getParameter("visitor_name");
+        if (name == null) {
+            return "Visitor";
+        }
         if (name.startsWith("\"")) {
           name =  name.substring(1, name.length()-1);
         }

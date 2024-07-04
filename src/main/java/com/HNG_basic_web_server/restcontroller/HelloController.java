@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.logging.Logger;
+//import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/api")
 public class HelloController {
 
-    Logger logger = Logger.getLogger("HelloController.class");
+//    Logger logger = Logger.getLogger("HelloController.class");
 
     private final UserService userService;
 
@@ -30,13 +30,13 @@ public class HelloController {
                                              HttpServletRequest request) {
 
         String ipAddress = userService.getIpAddress(request);
-        logger.info("ipAddress: " + ipAddress );
+//        logger.info("ipAddress: " + ipAddress );
         LocationInfoDTO locationInfo = userService.getLocationInfo(request);
-        logger.info("locationInfo: " + locationInfo );
+//        logger.info("locationInfo: " + locationInfo );
         String location = locationInfo.getLocation().getRegion();
-        logger.info("location: " + location);
+//        logger.info("location: " + location);
         double temperature = locationInfo.getCurrent().getTemp_c();
-        logger.info("temperature: " + temperature);
+//        logger.info("temperature: " + temperature);
 
         String greeting = "Hello, " + userService.checkName(request) + "!, the temperature is "
                 + temperature + " degrees Celcius in " + location;
