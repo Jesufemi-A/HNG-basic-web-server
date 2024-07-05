@@ -41,7 +41,7 @@ public class UserService {
     public LocationInfoDTO getLocationInfo(HttpServletRequest request) {
         LocationInfoDTO e = null;
         try {
-            String uri = "http://api.weatherapi.com/v1/current.json?key=9b4ac5bcbabb4632a2f194533240307&q=" + "129.205.113.173";
+            String uri = "http://api.weatherapi.com/v1/current.json?key=9b4ac5bcbabb4632a2f194533240307&q=" + getIpAddress(request);
 
             e = restTemplate.getForObject(uri, LocationInfoDTO.class);
         } catch (RuntimeException r) {
